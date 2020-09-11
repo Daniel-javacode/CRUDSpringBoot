@@ -1,9 +1,8 @@
-INSERT INTO `user` (`first_name`,`last_name`,`email`,`password`,`role`)
+INSERT INTO `user` (`username`,`password`,`roles`)
 VALUES
-("Jonny", "Depp", "jonny@mail.ru", "Depp", "ROLE_ADMIN"),
-("Brad", "Pit", "bradpit@mail.com", "Depp", "ROLE_USER"),
-("Silvester", "Stallone", "stallone@gmail.com", "Depp", "ROLE_ADMIN"),
-("Mohamed", "Ali", "mohamedali@yandex.ru", "Depp", "ROLE_USER"),
-("Roy", "Jons", "royjons@gmail.com", "Depp", "ROLE_ADMIN"),
-("Somebody", "Anylastname", "anybody@gmail.com", "Depp", "ROLE_USER"),
-("Ceanu", "Rivs", "ceanurivs@mail.au", "Depp", "ROLE_ADMIN");
+("Jonny_Depp", "Depp", "ROLE_ADMIN"),
+("Brad_Pit", "Bread", "ROLE_USER"),
+("Silvester_Stallone", "Steel", "ROLE_ADMIN"),
+("Mohamed_Ali", "AliExpress", "ROLE_USER"),
+("Roy_Jons", "Johns", "ROLE_USER"),
+("Ceanu_Rivs", "Rivzz", "ROLE_ADMIN");

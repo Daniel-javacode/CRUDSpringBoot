@@ -13,15 +13,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private final UserService userService;
 
-    public UserDetailsServiceImpl (UserService userService){
+    public UserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userService.getByLogin(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userService.getByLogin(username);
         if (user == null) {
-            throw new UsernameNotFoundException("Login " + login + " not found");
+            throw new UsernameNotFoundException("Username " + username + " not found");
         }
         return user;
     }
