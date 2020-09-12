@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller("userController")
-@RequestMapping("/")
+//@RequestMapping("/")
 public class UserController {
+
     private UserService userService;
 
     @Autowired
@@ -25,7 +26,7 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView allUsers() {
         List<User> users = userService.allUsers();
         ModelAndView modelAndView = new ModelAndView();
