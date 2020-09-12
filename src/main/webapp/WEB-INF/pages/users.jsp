@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -15,7 +15,7 @@
         <th>password</th>
         <th>action</th>
     </tr>
-    <c:forEach var="user" items="${userList}">
+    <c:forEach items="${userList}" var="user">
         <tr>
             <td>${user.id}</td>
             <td>${user.username}</td>
@@ -29,7 +29,6 @@
 </table>
 
 <h2>Add</h2>
-<c:url value="/admin/add" var="add"/>
-<a href="${add}">Add new user</a>
+<a href="/admin/add">Add new user</a>
 </body>
 </html>
