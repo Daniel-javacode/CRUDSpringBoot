@@ -17,8 +17,8 @@
             <td th:utext="${user.username}"></td>
             <td th:utext="${user.password}"></td>
             <td>
-                <a href="/admin/edit/${user.id}">edit</a>
-                <a href="/admin/delete/${user.id}">delete</a>
+                <a th:href="@{/admin/edit/{path}(path=${user.id})}">edit</a>
+                <a th:href="@{/admin/delete/{path}(path=${user.id})}">delete</a>
             </td>
         </tr>
 </table>

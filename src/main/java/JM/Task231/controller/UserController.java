@@ -34,6 +34,7 @@ public class UserController {
         modelAndView.addObject("userList", users);
         return modelAndView;
     }
+
     @RequestMapping(value = "/admin/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) {
         User user = userService.getById(id);
@@ -42,32 +43,37 @@ public class UserController {
         modelAndView.addObject("user", user);
         return modelAndView;
     }
+
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
     public ModelAndView editUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/users");
         userService.edit(user);
         return modelAndView;
     }
+
     @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
+        modelAndView.setViewName("addPage");
         return modelAndView;
     }
+
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/users");
         userService.add(user);
         return modelAndView;
     }
+
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/users");
         User user = userService.getById(id);
         userService.delete(id);
         return modelAndView;
     }
+
 }
