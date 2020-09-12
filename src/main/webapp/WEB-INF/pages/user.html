@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>USER</title>
+</head>
+<body>
+<ul>
+    <li><h4>ID</h4>
+        <span th:utext="${user.id}"></span>
+    </li>
+    <li>
+        <h4>Username</h4>
+        <span th:utext="${user.username}"></span>
+    </li>
+    <li>
+        <h4>Password</h4>
+        <span th:utext="${user.password}"></span>
+    </li>
+    <li>
+        <h4>Roles</h4>
+        <span th:each="role : ${user.getRoles()}" th:utext="${role.name} "></span>
+    </li>
+    <li>
+        <h3>Exit</h3>
+        <a th:href="@{/logout}">Logout</a>
+    </li>
+</ul>
+
+</body>
+</html>

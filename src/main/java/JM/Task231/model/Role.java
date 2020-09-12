@@ -3,9 +3,11 @@ package JM.Task231.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.Set;
 
 @Table(name = "roles")
+@Transactional
 @Entity
 public class Role implements GrantedAuthority {
 
