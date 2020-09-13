@@ -1,13 +1,14 @@
 package JM.Task231.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Transient;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.Set;
 
 @Table(name = "roles")
-@Transactional
+@Transient
 @Entity
 public class Role implements GrantedAuthority {
 
@@ -49,6 +50,7 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
+    @Transactional
     public Set<User> getUsers() {
         return users;
     }
@@ -58,16 +60,13 @@ public class Role implements GrantedAuthority {
     }
 
     @Override
+    @Transactional
     public String getAuthority() {
         return getName();
     }
 
     @Override
     public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", users=" + users +
-                '}';
+        return name;
     }
 }
