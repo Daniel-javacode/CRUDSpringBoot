@@ -3,15 +3,15 @@
     <title>Edit</title>
 </head>
 <body>
-<form action="/admin/edit" method="POST">
+<form action="#" th:action="@{/admin/edit}" th:object="${user}" method="POST">
 
-    <input type="hidden" name="id" value="${user.id}">
+    <input type="hidden" name="id" th:field="*{id}">
 
     <label for="username">username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" th:field="*{username}" placeholder="username" id="username">
 
     <label for="password">password</label>
-    <input type="text" name="password" id="password">
+    <input type="text" th:field="*{password}" placeholder="password" id="password">
 
     <input type="submit" value="Edit user">
 

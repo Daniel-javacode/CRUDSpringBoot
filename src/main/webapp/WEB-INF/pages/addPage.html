@@ -3,13 +3,13 @@
     <title>Add</title>
 </head>
 <body>
-<form action="/admin/add" method="POST">
+<form action="#" th:action="@{/admin/add}" th:object="${user}" method="POST">
 
     <label for="username">username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" th:field="*{username}" placeholder="username" id="username">
 
     <label for="password">password</label>
-    <input type="text" name="password" id="password">
+    <input type="text" th:field="*{password}" placeholder="password" id="password">
 
     <input type="submit" value="Add new user">
 
