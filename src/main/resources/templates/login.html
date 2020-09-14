@@ -10,21 +10,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-        }
-
-        @media (min-width: 576px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
 </head>
 
 <body class="text-center">
@@ -32,11 +17,12 @@
 <form class="container w-25 p-3" action="/login" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputUsername" class="sr-only">Email address</label>
-    <input name="j_username" type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
+    <input name="j_username" type="text" id="inputUsername" class="form-control" placeholder="Username" required=""
+           autofocus="">
     <label for="inputPassword" class="sr-only">Password</label>
     <input name="j_password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
 
 </body>
