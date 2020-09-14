@@ -15,14 +15,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import JM.Task231.dao.UserDAO;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({"classpath:db.properties"})
+@PropertySource({"classpath:application.properties"})
 @ComponentScan({"JM.Task231"})
 @EnableJpaRepositories(basePackages = {"JM.Task231.dao"})
 public class JpaConfig {
@@ -37,10 +36,10 @@ public class JpaConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
-        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
-        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        dataSource.setDriverClassName(environment.getRequiredProperty("spring.datasource.driver-class-name"));
+        dataSource.setUrl(environment.getRequiredProperty("spring.datasource.url"));
+        dataSource.setUsername(environment.getRequiredProperty("spring.datasource.username"));
+        dataSource.setPassword(environment.getRequiredProperty("spring.datasource.password"));
         return dataSource;
     }
 
@@ -59,10 +58,10 @@ public class JpaConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
-        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.dialect", environment.getRequiredProperty("spring.jpa.properties.hibernate.dialect"));
+        properties.put("hibernate.show_sql", environment.getRequiredProperty("spring.jpa.show-sql"));
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("spring.jpa.properties.hibernate.format_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("spring.jpa.hibernate.ddl-auto"));
         return properties;
     }
 

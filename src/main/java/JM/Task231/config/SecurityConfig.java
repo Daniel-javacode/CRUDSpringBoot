@@ -18,11 +18,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public AuthenticationSuccessHandler loginSuccessHandler(){
-        return new LoginSuccessHandler();
-    }
-
     @Autowired
     UserDetailsService udsi;
 
@@ -35,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
                 .loginPage("/login")
-                .successHandler(loginSuccessHandler())
+                .successHandler(new LoginSuccessHandler())
                 .loginProcessingUrl("/login")
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")

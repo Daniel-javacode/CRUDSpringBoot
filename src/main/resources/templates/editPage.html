@@ -1,9 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add</title>
+    <title>Edit</title>
 </head>
 <body>
-<form action="#" th:action="@{/admin/add}" th:object="${user}" method="POST">
+<form action="#" th:action="@{/admin/edit}" th:object="${user}" method="POST">
+
+    <input type="hidden" name="id" th:field="*{id}">
 
     <label for="username">username</label>
     <input type="text" th:field="*{username}" placeholder="username" id="username">
@@ -11,10 +13,10 @@
     <label for="password">password</label>
     <input type="text" th:field="*{password}" placeholder="password" id="password">
 
-    <input type="submit" value="Add new user">
+    <input type="submit" value="Edit user">
 
     <h3>Exit</h3>
-    <a th:href="/logout">Logout</a>
+    <p><a th:href="@{/logout}">Logout</a></p>
 
 </form>
 </body>
