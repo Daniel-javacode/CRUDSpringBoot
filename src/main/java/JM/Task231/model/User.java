@@ -91,7 +91,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return email;
     }
 
@@ -105,7 +105,7 @@ public class User implements UserDetails {
     }
 
     public String rolesToString() {
-        return roles.toString();
+        return roles.toString().replaceAll("[^A-Z]", "").replaceAll("ROLE", " ");
     }
 
     @Transactional
@@ -141,6 +141,10 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean isAdmin() {
+        return rolesToString().contains("ADMIN");
     }
 
     @Override

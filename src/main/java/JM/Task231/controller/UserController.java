@@ -65,7 +65,7 @@ public class UserController {
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
     public ModelAndView editUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/admin/users");
+        modelAndView.setViewName("redirect:/admin");
         userService.edit(user);
         return modelAndView;
     }
@@ -82,7 +82,7 @@ public class UserController {
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/admin/users");
+        modelAndView.setViewName("redirect:/admin");
         userService.add(user);
         return modelAndView;
     }
@@ -90,7 +90,7 @@ public class UserController {
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/admin/users");
+        modelAndView.setViewName("redirect:/admin");
         User user = userService.getById(id);
         userService.delete(id);
         return modelAndView;
