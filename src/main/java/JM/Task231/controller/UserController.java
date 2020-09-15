@@ -31,15 +31,6 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public ModelAndView allUsers() {
-        List<User> users = userService.allUsers();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("users");
-        modelAndView.addObject("userList", users);
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView userInfo() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -54,9 +45,11 @@ public class UserController {
     public ModelAndView adminInfo() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getById(((User) auth.getPrincipal()).getId());
+        List<User> users = userService.allUsers();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin");
         modelAndView.addObject("user", user);
+        modelAndView.addObject("userList", users);
+        modelAndView.setViewName("admin");
         return modelAndView;
     }
 

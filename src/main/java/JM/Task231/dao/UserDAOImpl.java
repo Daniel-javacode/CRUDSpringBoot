@@ -40,8 +40,8 @@ public class UserDAOImpl implements UserDAO {
         return em.find(User.class, id);
     }
 
-    public User getByLogin(String username) {
-        return em.createQuery("from User u where u.username = :username", User.class)
-                .setParameter("username", username).getSingleResult();
+    public User getByLogin(String email) {
+        return em.createQuery("from User u where u.email = :email", User.class)
+                .setParameter("email", email).getSingleResult();
     }
 }

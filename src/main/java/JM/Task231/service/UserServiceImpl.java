@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         return userDAO.getById(id);
     }
 
-    public User getByLogin(String login){
-        return userDAO.getByLogin(login);
+    public User getByLogin(String email){
+        return userDAO.getByLogin(email);
     }
 }
