@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
     <title>Admin panel</title>
 </head>
@@ -47,26 +46,7 @@
                 <h1>Admin panel</h1>
             </div>
 
-            <div class="btn-group btn-group-xs">
-                <a href="#tab_1" data-toggle="tab_1" class="btn btn-success">Вкладка №1</a>
-                <a href="#tab_2" data-toggle="tab" class="btn btn-primary">Вкладка №2</a>
-                <a href="#tab_3" data-toggle="tab" class="btn btn-outline-info">Вкладка №3</a>
-                <a href="#tab_4" data-toggle="tab" class="btn btn-danger">Вкладка №4</a>
-                <a href="#tab_5" data-toggle="tab" class="btn btn-warning">Вкладка №5</a>
-            </div>
-
-            <!-- Класс mt-4 (margin-top) добавляет отступ сверху -->
-            <div class="tab-content mt-4">
-                <div role="tabpanel" class="tab-pane active" id="tab_1">
-                    <button type="button" class="btn btn-success">Первая вкладка</button>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="tab_2">Вкладка под номером 2</div>
-                <div role="tabpanel" class="tab-pane" id="tab_3">Вкладка под номером 3</div>
-                <div role="tabpanel" class="tab-pane" id="tab_4">Вкладка под номером 4</div>
-                <div role="tabpanel" class="tab-pane" id="tab_5">Вкладка под номером 5</div>
-            </div>
-
-            <!--<ul class="nav nav-tabs">
+            <ul class="nav nav-tabs">
                 <li class="nav-item active">
                     <a class="nav-link" data-toggle="tab" href="#users_table" aria-controls="users_table">Users
                         table</a>
@@ -116,41 +96,53 @@
                     <h4>Add new user</h4>
                     <form class="container w-50 p-3" th:action="@{/admin/add}" th:object="${user}" method="POST">
 
-                        <h6 class="h3 mb-3 font-weight-normal">First name</h6>
-                        <<label for="inputFirstName" class="sr-only">First name</label>
-                        <input name="firstName" type="text" id="inputFirstName" class="form-control"
-                               placeholder="First name" required="">
-
-                        <h6 class="h3 mb-3 font-weight-normal">Last name</h6>
-                        <<label for="inputLastName" class="sr-only">Last name</label>
-                        <input name="lastName" type="text" id="inputLastName" class="form-control"
-                               placeholder="Last name" required="">
-
-                        <h6 class="h3 mb-3 font-weight-normal">Age</h6>
-                        <<label for="inputAge" class="sr-only">Age</label>
-                        <input name="Age" type="text" id="inputAge" class="form-control" placeholder="Age" required="">
-
-                        <h6 class="h3 mb-3 font-weight-normal">Email</h6>
-                        <<label for="inputEmail" class="sr-only">Email</label>
-                        <input name="Email" type="email" id="inputEmail" class="form-control" placeholder="Email"
-                               required="">
-
-                        <h6 class="h3 mb-3 font-weight-normal">Password</h6>
-                        <<label for="inputPassword" class="sr-only">Password</label>
-                        <input name="Password" type="password" id="inputPassword" class="form-control"
-                               placeholder="Password" required="">
-
-                        <h6 class="h3 mb-3 font-weight-normal">Role</h6>
-                        <<label for="inputRole" class="sr-only">Role</label>
-                        <input name="role" type="text" id="inputRole" class="form-control" placeholder="Role"
-                               required="">
-
-                        <button class="btn btn-success" type="submit">Add new user</button>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">First name</h6>
+                            <label for="inputFirstName" class="sr-only">First name</label>
+                            <input name="firstName" type="text" id="inputFirstName" class="form-control"
+                                   placeholder="First name" required="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">Last name</h6>
+                            <label for="inputLastName" class="sr-only">Last name</label>
+                            <input name="lastName" type="text" id="inputLastName" class="form-control"
+                                   placeholder="Last name" required="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">Age</h6>
+                            <label for="inputAge" class="sr-only">Age</label>
+                            <input name="Age" type="text" id="inputAge" class="form-control" placeholder="Age"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">Email</h6>
+                            <label for="inputEmail" class="sr-only">Email</label>
+                            <input name="Email" type="email" id="inputEmail" class="form-control" placeholder="Email"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">Password</h6>
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input name="Password" type="password" id="inputPassword" class="form-control"
+                                   placeholder="Password" required="">
+                        </div>
+                        <div class="form-group">
+                            <h6 class="mb-3 font-weight-bold text-center">Role</h6>
+                            <label for="inputRole" class="sr-only">Role</label>
+                            <select multiple class="form-control" id="inputRole" name="roles">
+                                <option value="">
+                                    ADMIN
+                                </option>
+                                <option value="">
+                                    USER
+                                </option>
+                            </select>
+                        </div>
+                        <button class="btn btn-success d-block mx-auto" type="submit">Add new user</button>
 
                     </form>
                 </div>
             </div>
--->
             <div class="modal" id="edit">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -190,15 +182,9 @@
         </main>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="http://bootstrap-ru.com/204/assets/js/bootstrap-tab.js"></script>
 <script src="http://bootstrap-ru.com/204/assets/js/bootstrap-dropdown.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
