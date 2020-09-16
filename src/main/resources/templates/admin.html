@@ -81,11 +81,14 @@
                             <td th:utext="${user.email}"></td>
                             <td th:utext="${user.rolesToString()}"></td>
                             <td>
-                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit">Edit
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal"
+                                        th:action="@{/admin/edit/{path}(path=${user.id})}" th:method="GET" id="edit">Edit
                                 </button>
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete">Delete
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"
+                                        th:action="@{/admin/delete/{path}(path=${user.id})}" th:method="GET"
+                                        id="delete">Delete
                                 </button>
                             </td>
                         </tr>
@@ -143,7 +146,7 @@
                     </form>
                 </div>
             </div>
-            <div class="modal" id="edit">
+            <div class="modal" id="editModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -151,17 +154,73 @@
                             <button class="close" data-dismiss="modal">x</button>
                         </div>
                         <div class="modal-body">
+                            <form class="container w-50 p-3" th:action="@{/admin/edit/{path}(path=${user.id})}" th:object="${user}" method="POST">
 
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">ID</h6>
+                                    <label for="editID" class="sr-only">ID</label>
+                                    <input name="id" type="text" id="editID" th:field="*{id}" class="form-control"
+                                           placeholder="ID" required="" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">First name</h6>
+                                    <label for="editFirstName" class="sr-only">First name</label>
+                                    <input name="firstName" type="text" id="editFirstName" th:field="*{firstName}"
+                                           class="form-control"
+                                           placeholder="First name" required="">
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Last name</h6>
+                                    <label for="editLastName" class="sr-only">Last name</label>
+                                    <input name="lastName" type="text" id="editLastName" th:field="*{lastName}"
+                                           class="form-control"
+                                           placeholder="Last name" required="">
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Age</h6>
+                                    <label for="editAge" class="sr-only">Age</label>
+                                    <input name="Age" type="text" id="editAge" th:field="*{age}" class="form-control"
+                                           placeholder="Age"
+                                           required="">
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Email</h6>
+                                    <label for="editEmail" class="sr-only">Email</label>
+                                    <input name="Email" type="email" id="editEmail" th:field="*{email}"
+                                           class="form-control" placeholder="Email"
+                                           required="">
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Password</h6>
+                                    <label for="editPassword" class="sr-only">Password</label>
+                                    <input name="Password" type="password" id="editPassword" th:field="*{password}"
+                                           class="form-control"
+                                           placeholder="Password" required="">
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Role</h6>
+                                    <label for="editRole" class="sr-only">Role</label>
+                                    <select multiple class="form-control" id="editRole" name="roles">
+                                        <option value="">
+                                            ADMIN
+                                        </option>
+                                        <option value="">
+                                            USER
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal">Close</button>
-                            <button class="btn" data-dismiss="modal">Edit</button>
+                            <button class="btn btn-primary" type="submit" data-dismiss="modal">Edit</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal" id="delete">
+            <div class="modal" id="deleteModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -169,11 +228,68 @@
                             <button class="close" data-dismiss="modal">x</button>
                         </div>
                         <div class="modal-body">
+                            <form class="container w-50 p-3" th:action="@{/admin/delete/{path}(path=${user.id})}"
+                                  th:object="${user}" method="POST">
 
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">ID</h6>
+                                    <label for="deleteID" class="sr-only">ID</label>
+                                    <input name="id" type="text" id="deleteID" th:field="*{id}" class="form-control"
+                                           placeholder="ID" required="" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">First name</h6>
+                                    <label for="deleteFirstName" class="sr-only">First name</label>
+                                    <input name="firstName" type="text" id="deleteFirstName" th:field="*{firstName}"
+                                           class="form-control"
+                                           placeholder="First name" required="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Last name</h6>
+                                    <label for="deleteLastName" class="sr-only">Last name</label>
+                                    <input name="lastName" type="text" id="deleteLastName" th:field="*{lastName}"
+                                           class="form-control"
+                                           placeholder="Last name" required="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Age</h6>
+                                    <label for="deleteAge" class="sr-only">Age</label>
+                                    <input name="Age" type="text" id="deleteAge" th:field="*{age}" class="form-control"
+                                           placeholder="Age"
+                                           required="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Email</h6>
+                                    <label for="deleteEmail" class="sr-only">Email</label>
+                                    <input name="Email" type="email" id="deleteEmail" th:field="*{email}"
+                                           class="form-control" placeholder="Email"
+                                           required="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Password</h6>
+                                    <label for="deletePassword" class="sr-only">Password</label>
+                                    <input name="Password" type="password" id="deletePassword" th:field="*{password}"
+                                           class="form-control"
+                                           placeholder="Password" required="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <h6 class="mb-3 font-weight-bold text-center">Role</h6>
+                                    <label for="deleteRole" class="sr-only">Role</label>
+                                    <select multiple class="form-control" id="deleteRole" name="roles" readonly>
+                                        <option value="">
+                                            ADMIN
+                                        </option>
+                                        <option value="">
+                                            USER
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal">Close</button>
-                            <button class="btn" data-dismiss="modal">Delete</button>
+                            <button class="btn btn-danger" type="submit" data-dismiss="modal">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -182,6 +298,7 @@
         </main>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
